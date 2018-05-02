@@ -1,12 +1,15 @@
 // JS for Tube The Earth
+
+$(document).ready(function() {
+
 const section = document.getElementById("map-section");
 
 var searchTerm = "03801";
 
-section.innerHTML =`
-    <iframe class="map" width="100%" height="100%" frameborder="0" style="border:0"
-    src="https://www.google.com/maps/embed/v1/search?key=AIzaSyBRjbBXmBByR-YaGaOMs7PAwS4SBmGIqzw&q=${searchTerm}" allowfullscreen>
-    </iframe>`
+// section.innerHTML =`
+//     <iframe class="map" width="100%" height="100%" frameborder="0" style="border:0"
+//     src="https://www.google.com/maps/embed/v1/search?key=AIzaSyBRjbBXmBByR-YaGaOMs7PAwS4SBmGIqzw&q=${searchTerm}" allowfullscreen>
+//     </iframe>`
 
 // assign variable to output
 
@@ -45,6 +48,85 @@ $('#btn-search').click(function renderMap(e) {
     src="http://www.google.com/maps/embed/v1/search?key=AIzaSyBRjbBXmBByR-YaGaOMs7PAwS4SBmGIqzw&q=${locationMap}"allowfullscreen>
     </iframe>`
 });
+
+/////////////////////////////////////////jess's code///////////////
+////////////
+var longi;
+var lati;
+
+// function initMap() {
+
+// var map = new google.maps.Map(document.getElementById("map-section"), {
+// zoom: 8,
+// center: {lat: -34.397, lng: 150.644}
+// });
+// var geocoder = new google.maps.Geocoder();
+// console.log(map.center);
+// google.maps.event.addListener(map, 'click', function(event) {
+// placeMarker(event.latLng);
+// });
+// function placeMarker(location) {
+// if (marker == undefined){
+// marker = new google.maps.Marker({
+// position: location,
+// map: map, 
+// animation: google.maps.Animation.DROP,
+// });
+// }
+// else{
+// marker.setPosition(location);
+// }
+// map.setCenter(location);
+// console.log(location.lat());//this is where latitude is being console logged
+// console.log(location.lng());//longitude
+// }
+// document.getElementById('submit').addEventListener('click', function() {
+// geocodeAddress(geocoder, map);
+// console.log(geocoder);
+// console.log(map);
+// console.log(map.center.lat());
+// console.log(map.center.lng());
+// longi = map.center.lng();
+// lati = map.center.lat();
+// //debugger;
+
+// });
+
+// }
+// initMap();
+
+// console.log(longi);
+
+function geocodeAddress(geocoder, resultsMap) {
+var address = document.getElementById('address').value;
+geocoder.geocode({'address': address}, function(results, status) {
+if (status === 'OK') {
+resultsMap.setCenter(results[0].geometry.location);
+var marker = new google.maps.Marker({
+map: resultsMap,
+position: results[0].geometry.location
+});
+} else {
+alert('Geocode was not successful for the following reason: ' + status);
+}
+console.log(address);
+console.log(results[0].geometry.location.lat());
+console.log(results[0].geometry.location.lng());
+});
+}
+var marker;
+function initialize() {
+var latlng = new google.maps.LatLng(42.55308, 9.140625);
+var myOptions = {
+zoom: 2,
+center: latlng,
+mapTypeId: google.maps.MapTypeId.ROADMAP,
+streetViewControl: false,
+mapTypeControl: false,
+};
+var map = new google.maps.Map(document.getElementById("map_canvas"),
+myOptions);
+}
 
 // Matt's code
 $("#history").on("click", function() {
@@ -93,6 +175,7 @@ $("#btn-temp").on("click", function() {
 
 //https://maps.googleapis.com/maps/api/geocode/json?address=Croatia&key=AIzaSyC38jvNaBiOYkmKPDHFXLYcOpdcJIqJ7PU
 
+
 var userAddress = "";
 var childrenArray = [];
 
@@ -110,7 +193,7 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
-$(document).ready(function() {
+
 
           //when data in database changes...
           database.ref().on("child_added", function(childSnapshot) { //each time another search is added to database...
