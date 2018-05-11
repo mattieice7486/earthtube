@@ -16,14 +16,14 @@ $(document).ready(function() {
         var j = 0;
     /////////////////////////////////////////////////////FIREBASE/////////////////////////////////////////////////////
     
-        var config = {
-            apiKey: "AIzaSyB4FzGqNZs6sYG5wsokxnFHJJutJSdbLTY",
-            authDomain: "tube-the-earth.firebaseapp.com",
-            databaseURL: "https://tube-the-earth.firebaseio.com",
-            projectId: "tube-the-earth",
-            storageBucket: "",
-            messagingSenderId: "686431765231"
-        };
+      var config = {
+        apiKey: "AIzaSyBfxry_HpGfNCuO3Sj_sZ2-b4cFQEOSraM",
+        authDomain: "earthtube-proj.firebaseapp.com",
+        databaseURL: "https://earthtube-proj.firebaseio.com",
+        projectId: "earthtube-proj",
+        storageBucket: "",
+        messagingSenderId: "194166509227"
+      };
     
         firebase.initializeApp(config);
         var database = firebase.database();
