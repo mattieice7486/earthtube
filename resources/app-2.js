@@ -114,6 +114,8 @@ $(document).ready(function() {
                             $("#historyDiv").html(popularThumbnailArray); //push updated contents of thumbnail array to page
                         }
                     //replace("watch?v=", "v/");
+										$("#mainVideo").attr("src", "https://www.youtube.com/embed/" + popularThumbnailId)
+										console.log(popularThumbnailArray)
                     })
                 })
             
